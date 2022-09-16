@@ -1,0 +1,64 @@
+                                                Group by reverse in a singly linked list
+
+public class nummm{
+      static Node head;
+      class Node{
+    	  Node next;
+    	  int data;
+    	  Node(int d){
+    		  data=d;
+    		  next=null;
+    	  }
+      }
+      
+      void add(int y) {
+    	  Node o=new Node(y);
+    	  o.next=head;
+    	  head=o;
+      }
+      void print() {
+    	  Node t=head;
+    	  while(t!=null) {
+    		  System.out.print(t.data+" ");
+    		  t=t.next;
+    	  }
+    	  System.out.println();
+      }
+      
+      Node reverse(Node head,int k) {
+    	  Node t=head;
+    	  Node e=null;
+    	  int count=0;
+    	  while(t!=null&&count<k) {
+    		  Node p=t.next;  
+    		  t.next=e;
+    		  e=t;
+    		  t=p;
+    		  count++;
+    	  }
+    	  
+    	 if(t!=null) {
+    		
+    		 head.next=reverse(t,k);
+    	 }
+    	 return e;
+      }
+          
+	    public static void main(String args[])
+	    {
+	    	nummm i=new nummm();
+	    	i.add(9);
+	    	i.add(1);
+	    	i.add(2);
+	    	i.add(4);
+	    	i.add(3);
+	    	i.add(5);
+	 
+	    	i.print();
+	    	head=i.reverse(head,2);
+	    	i.print();
+	    }}
+
+OUTPUT:
+5 3 4 2 1 9
+3 5 2 4 9 1
